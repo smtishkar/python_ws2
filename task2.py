@@ -26,20 +26,20 @@ while True:
         money = int(input("Введите сумму: "))
         if money % AMOUNT_LIMIT == 0 and sum < RICH:
             sum += money
-            print(sum)
+            print("Ваш баланс - ", sum)
         elif money % AMOUNT_LIMIT == 0 and sum > RICH:
             sum =  (sum + money) - ((sum + money) * WEALTH_TAX)          
-            print(sum)
+            print("Ваш баланс - ", sum)
         else:
             print("сумма введена некорретно")
         if count % ADDITIONAL_RATE_PERIOD == 0:
-            sum -= sum * ADDITIONAL_RATE
-            print("Будет списанна комиссия - ", sum * ADDITIONAL_RATE)     #Сделать чтобы начилсяслись процентыб а не снимались
-            print(sum)
-    if command == "-" and sum > 50:
+            sum += sum * ADDITIONAL_RATE
+            print("Вам дополнительный доход - ", sum * ADDITIONAL_RATE)     #подумать нужно ли тут округление?
+            print("Ваш баланс - ", sum)
+    if command == "-" and sum > 50:                 # Уходим в минус и снимается еще деньги за операцию
         count += 1
         money = int(input("Введите сумму: "))
-        if money % AMOUNT_LIMIT == 0:
+        if money % AMOUNT_LIMIT == 0 and sum >= money :
             if money * COMMISION < MIN_COMMISION:
                 sum -= (money + MIN_COMMISION)
 
@@ -48,15 +48,17 @@ while True:
 
             else:
                 sum -= (money + (money * COMMISION))
-            print(sum)
+            print("Ваш баланс - ", sum)
+        elif money % AMOUNT_LIMIT == 0 and sum < money :
+            print("Недостаточно средств")
         else:
             print("сумма введена некорретно")
             if count % ADDITIONAL_RATE_PERIOD == 0:
-                sum -= sum * ADDITIONAL_RATE
-                print("Будет списана комиссия - ", sum * ADDITIONAL_RATE)          #Сделать чтобы начилсяслись проценты, а не снимались
-                print(sum)
+                sum += sum * ADDITIONAL_RATE
+                print("Вам дополнительный доход - ", sum * ADDITIONAL_RATE)          #Сделать чтобы начилсяслись проценты, а не снимались
+                print("Ваш баланс - ", sum)
     if command == "e":
-        print(sum)
+        print("Ваш баланс - ", sum)
         break
     
 

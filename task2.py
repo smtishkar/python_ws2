@@ -20,7 +20,8 @@ while True:
             sum += money
             print(sum)
         elif money % 50 == 0 and sum > 5_000_000:
-            sum += money 
+            sum =  (sum + money) - ((sum + money) * 0.1)          
+            print(sum)
         else:
             print("сумма введена некорретно")
         if count % 3 == 0:

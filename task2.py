@@ -39,7 +39,7 @@ while True:
 
         if count % ADDITIONAL_RATE_PERIOD == 0:
             sum += sum * ADDITIONAL_RATE
-            print("Вам дополнительный доход - ", sum * ADDITIONAL_RATE)     #подумать нужно ли тут округление?
+            print("Вам дополнительный доход - ", sum * ADDITIONAL_RATE)     
             print("Ваш баланс - ", sum)
     if command == "-" and sum >= START_MINIMUM_LIMIT:                
         count += 1
@@ -58,14 +58,12 @@ while True:
                         sum -= (money + MAX_COMMISION)
                     else: print ("Операция не возможна")
                     temp = 0 
-                    # sum -= (money + MAX_COMMISION)
                 else:
                     temp = sum - (money * COMMISION)
                     if temp > 0:
                         sum -= (money * COMMISION)
                     else: print ("Операция не возможна")
                     temp = 0 
-                    # sum -= (money + (money * COMMISION))
                 print("Ваш баланс - ", sum)
             elif money % AMOUNT_LIMIT == 0 and sum < money :
                 print("Недостаточно средств")
@@ -86,8 +84,6 @@ while True:
                         sum -= ((money + MAX_COMMISION) + sum * WEALTH_TAX)
                     else: print ("Операция не возможна")
                     temp = 0       
-                    # sum -= (money + MAX_COMMISION)
-                    # sum -= sum * WEALTH_TAX
                 else:
                     sum -= (money + (money * COMMISION))
                     sum -= sum * WEALTH_TAX
